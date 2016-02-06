@@ -4,7 +4,7 @@ Shell script for recording of radiko (internet radio)
 
 ## Installation
 
-    $ git clone https://github.com/nagahat/radiko
+    $ git clone https://github.com/nagahar/radiko
     $ cd radiko
     $ chmod +x rec_radiko.sh
 
