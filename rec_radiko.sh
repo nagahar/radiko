@@ -1,6 +1,6 @@
 #!/bin/bash
 
-date=`date '+%Y-%m-%d-%H:%M'`
+date=`date '+%Y-%m-%d-%H%M'`
 playerurl=http://radiko.jp/player/swf/player_4.1.0.00.swf
 playerfile="$HOME/rec_radiko/player.swf"
 keyfile="$HOME/rec_radiko/authkey.png"
