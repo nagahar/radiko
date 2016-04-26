@@ -150,7 +150,7 @@ if [ $? = 0 ]; then
 fi
 
 # To upload Dropbox add@2015-09-04
-#$HOME/rec_radiko/Dropbox-Uploader/dropbox_uploader.sh upload "$output" Radio/
+$HOME/radiko/Dropbox-Uploader/dropbox_uploader.sh upload "$output" Radios/
 
 if [ $? = 0 ]; then
     rm "$output"
