@@ -2,14 +2,15 @@
 
 date=`date '+%Y-%m-%d-%H%M'`
 playerurl=http://radiko.jp/player/swf/player_4.1.0.00.swf
-playerfile="$HOME/rec_radiko/player.swf"
-keyfile="$HOME/rec_radiko/authkey.png"
+dir=`dirname $0`
+playerfile=$dir/player.swf
+keyfile=$dir/authkey.png
 
 if [ $# -eq 3 ]; then
   channel=$1
   DURATION=`expr $2 \* 60`
   fname=${3}_${date}
-  output=$HOME/rec_radiko/${fname}.mp3
+  output=$dir/${fname}.mp3
   tmp=/tmp/$fname
 else
   echo "usage : $0 channel_name duration(minuites) file_name"
@@ -150,7 +151,7 @@ if [ $? = 0 ]; then
 fi
 
 # To upload Dropbox add@2015-09-04
-$HOME/radiko/Dropbox-Uploader/dropbox_uploader.sh upload "$output" Radios/
+$dir/Dropbox-Uploader/dropbox_uploader.sh upload $output Radios/
 
 if [ $? = 0 ]; then
     rm "$output"
