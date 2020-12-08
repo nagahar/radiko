@@ -14,7 +14,6 @@ Install these binaries
 
 1. ffmpeg
 1. rtmpdump
-1. swftools
 1. lame
 1. libxml2-utils
 

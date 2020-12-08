@@ -3,8 +3,7 @@
 date=`date '+%Y-%m-%d-%H%M'`
 playerurl=http://radiko.jp/apps/js/flash/myplayer-release.swf
 dir=`dirname $0`
-playerfile=$dir/player.swf
-keyfile=$dir/authkey.png
+authkey_value="bcd151073c03b352e1ef2fd66c32209da9ca0afa"
 
 if [ $# -eq 3 ]; then
   channel=$1
@@ -18,44 +17,11 @@ else
 fi
 
 #
-# get player
-#
-if [ -f $playerfile ]; then
-  rm $playerfile
-  rm $keyfile
-fi
-# to get playerfile
-if [ ! -f $playerfile ]; then
-  wget -q -O $playerfile $playerurl
-
-  if [ $? -ne 0 ]; then
-    echo "failed get player"
-    exit 1
-  fi
-fi
-
-#
-# get keydata (need swftool)
-#
-if [ ! -f $keyfile ]; then
-  swfextract -b 12 $playerfile -o $keyfile
-
-  if [ ! -f $keyfile ]; then
-    echo "failed get keydata"
-    exit 1
-  fi
-fi
-
-if [ -f auth1_fms ]; then
-  rm -f auth1_fms
-fi
-
-#
 # access auth1_fms
 #
 wget -q \
      --header="pragma: no-cache" \
-     --header="X-Radiko-App: pc_ts" \
+     --header="X-Radiko-App: pc_html5" \
      --header="X-Radiko-App-Version: 4.0.0" \
      --header="X-Radiko-User: test-stream" \
      --header="X-Radiko-Device: pc" \
@@ -76,7 +42,7 @@ authtoken=`perl -ne 'print $1 if(/x-radiko-authtoken: ([\w-]+)/i)' auth1_fms`
 offset=`perl -ne 'print $1 if(/x-radiko-keyoffset: (\d+)/i)' auth1_fms`
 length=`perl -ne 'print $1 if(/x-radiko-keylength: (\d+)/i)' auth1_fms`
 
-partialkey=`dd if=$keyfile bs=1 skip=${offset} count=${length} 2> /dev/null | base64`
+partialkey=`echo $authkey_value | dd bs=1 skip=${offset} count=${length} 2> /dev/null | base64`
 echo "authtoken: ${authtoken} \noffset: ${offset} length: ${length} \npartialkey: 
 
 $partialkey"
@@ -92,7 +58,7 @@ fi
 #
 wget -q \
      --header="pragma: no-cache" \
-     --header="X-Radiko-App: pc_ts" \
+     --header="X-Radiko-App: pc_html5" \
      --header="X-Radiko-App-Version: 4.0.0" \
      --header="X-Radiko-User: test-stream" \
      --header="X-Radiko-Device: pc" \
