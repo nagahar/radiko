@@ -117,7 +117,7 @@ if [ $? = 0 ]; then
 fi
 
 # To upload Dropbox add@2015-09-04
-$dir/Dropbox-Uploader/dropbox_uploader.sh upload $output Radios/
+$dir/Dropbox-Uploader/dropbox_uploader.sh upload $output $output
 
 if [ $? = 0 ]; then
     rm "$output"
