@@ -1,7 +1,6 @@
 #!/bin/bash
 
 date=`date '+%Y-%m-%d-%H%M'`
-playerurl=http://radiko.jp/apps/js/flash/myplayer-release.swf
 dir=`dirname $0`
 authkey_value="bcd151073c03b352e1ef2fd66c32209da9ca0afa"
 
@@ -10,7 +9,7 @@ if [ $# -eq 3 ]; then
   DURATION=`expr $2 \* 60`
   fname=${3}_${date}
   output=$dir/${fname}.mp3
-  tmp=/tmp/$fname
+  tmp=/tmp/${fname}.m4a
 else
   echo "usage : $0 channel_name duration(minuites) file_name"
   exit 1
@@ -43,8 +42,10 @@ offset=`perl -ne 'print $1 if(/x-radiko-keyoffset: (\d+)/i)' auth1_fms`
 length=`perl -ne 'print $1 if(/x-radiko-keylength: (\d+)/i)' auth1_fms`
 
 partialkey=`echo $authkey_value | dd bs=1 skip=${offset} count=${length} 2> /dev/null | base64`
-echo "authtoken: ${authtoken} \noffset: ${offset} length: ${length} \npartialkey: 
-
+echo "authtoken: ${authtoken} 
+offset: ${offset}
+length: ${length}
+partialkey: 
 $partialkey"
 
 rm -f auth1_fms
@@ -86,32 +87,26 @@ if [ -f ${channel}.xml ]; then
   rm -f ${channel}.xml
 fi
 
-wget -q "http://radiko.jp/v2/station/stream/${channel}.xml"
+wget -q "http://radiko.jp/v2/station/stream_smh_multi/${channel}.xml"
 
-stream_url=`echo "cat /url/item[1]/text()" | xmllint --shell ${channel}.xml | tail -2 | head -1`
-url_parts=(`echo ${stream_url} | perl -pe 's!^(.*)://(.*?)/(.*)/(.*?)$/!$1://$2 $3 $4!'`)
-
+stream_url=`xmllint --xpath "/urls/url[@areafree='0'][1]/playlist_create_url/text()" ${channel}.xml`
 rm -f ${channel}.xml
 
-#
-# rtmpdump
-#
-         #-r "rtmpe://f-radiko.smartstream.ne.jp" \
-         #--playpath "simul-stream.stream" \
-         #--app "${channel}/_definst_" \
-# Added --timeout 300(max) to avoid interruption add@2014-12-30
-rtmpdump -v \
-         -r ${url_parts[0]} \
-         --app ${url_parts[1]} \
-         --playpath ${url_parts[2]} \
-         -W $playerurl \
-         -C S:"" -C S:"" -C S:"" -C S:$authtoken \
-         --live \
-         --stop $DURATION \
-         --timeout 300 \
-         -o "$tmp"
+# modify ffmpeg options with HLS add@2021-01-16
+ffmpeg \
+    -loglevel error \
+    -fflags +discardcorrupt \
+    -headers "X-Radiko-Authtoken: ${authtoken}" \
+    -i "${stream_url}" \
+    -acodec copy \
+    -vn \
+    -bsf:a aac_adtstoasc \
+    -y \
+    -t ${DURATION} \
+    "$tmp"
 
 ffmpeg -loglevel quiet -y -i "$tmp" -acodec libmp3lame -ab 128k "$output"
+
 if [ $? = 0 ]; then
   rm -f "$tmp"
 fi

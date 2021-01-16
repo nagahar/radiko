@@ -4,7 +4,7 @@
 0 9 15-21 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh QRR 40 kunimaru
 0 9 29-31 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh QRR 40 kunimaru
 #0 15 * * 5 radiko/rec_radiko.sh TBS 30 tama
-#0 18 * * 6 radiko/rec_radiko.sh TBS 30 shiba
+0 18 * * 6 radiko/rec_radiko.sh TBS 30 shiba
 #30 8 * * 1-4 radiko/rec_radiko.sh TBS 150 ijuin
 #10 13 * * 0 $HOME/radiko/rec_radiko.sh TBS 1 debug >$HOME/radiko/out.log 2>$HOME/rec_radiko/err.log
 #12 13 * * 0 $HOME/radiko/rec_radiko.sh TBS 1 debug >$HOME/radiko/out.log 2>$HOME/rec_radiko/err.log

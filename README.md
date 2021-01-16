@@ -12,9 +12,7 @@ Shell script for recording of radiko (internet radio)
 
 Install these binaries
 
-1. ffmpeg
-1. rtmpdump
-1. lame
+1. ffmpeg+libmp3lame
 1. libxml2-utils
 
 ### Quick Tutorial
