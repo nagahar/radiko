@@ -10,6 +10,7 @@
 15 8 22-26 3 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-nihon
 0 9 27-31 3 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-nihon
 0 18 * * 6 radiko/rec_radiko.sh radiko TBS 30 shiba
+15 12 * * 1-5 radiko/rec_radiko.sh nhk r2 45 eigo
 #0 15 * * 5 radiko/rec_radiko.sh TBS 30 tama
 #30 8 * * 1-4 radiko/rec_radiko.sh TBS 150 ijuin
 #10 13 * * 0 $HOME/radiko/rec_radiko.sh TBS 1 debug >$HOME/radiko/out.log 2>$HOME/rec_radiko/err.log
