@@ -12,7 +12,7 @@ if [ $# -eq 4 ]; then
     output=$dir/${fname}.mp3
     tmp=/tmp/${fname}.m4a
 else
-    echo "usage : $0 channel_name duration(minuites) file_name"
+    echo "usage : $0 (nhk|radiko) channel_name minutes file_name"
     exit 1
 fi
 
@@ -117,9 +117,11 @@ elif [ "$type" = "nhk" ]; then
         "string(/radiru_config/config[@key='url_stream_r2']/value[1]/@text)" - \
             2> /dev/null)
     else
+        station_id="tokyo-r1"
+        # station_id="tokyo-fm"
         # Split area and channel
-        area="$(echo "${channel}" | cut -d '-' -f 1)"
-        ch="$(echo "${channel}" | cut -d '-' -f 2)"
+        area="$(echo "${station_id}" | cut -d '-' -f 1)"
+        ch="$(echo "${station_id}" | cut -d '-' -f 2)"
         stream_url=$(curl --silent \
             "https://www.nhk.or.jp/radio/config/config_v5.7.3_radiru_and.xml" \
             | xmllint --xpath \
