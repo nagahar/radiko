@@ -27,19 +27,19 @@
 # 随時
 ## 放送大学
 ### 2021/7/22-7/29 15回 経験論から言語哲学へ
-0 6 22 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-keiken-gengo
-0 6 23-29 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-keiken-gengo
-### 2021/7/30-8/7 15回 耳から学ぶ英語
-0 15 30 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-mimi-eigo
-0 15 31 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-mimi-eigo
-0 15 1-7 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-mimi-eigo
+#0 6 22 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-keiken-gengo
+#0 6 23-29 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-keiken-gengo
+#### 2021/7/30-8/7 15回 耳から学ぶ英語
+#0 15 30 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-mimi-eigo
+#0 15 31 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-mimi-eigo
+#0 15 1-7 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-mimi-eigo
 ### 2021/8/8-8/15 15回 ビートルズ de英文法
-0 15 8-15 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-beatles-eigo
+#0 15 8-15 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-beatles-eigo
 ### 2021/7/30-8/13 15回 現代フランス哲学に学ぶ
-0 6 30-31 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-france-tetsugaku
-0 6 1-13 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-france-tetsugaku
+#0 6 30-31 7 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-france-tetsugaku
+#0 6 1-13 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 45 oic-france-tetsugaku
 ### 2021/8/15-8/22 15回 現代を生きるための化学
-30 7 15-22 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-gendai-kagaku
+#30 7 15-22 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-gendai-kagaku
 ### 2021/8/29-9/6 15回 日本文学における古典と近代
 0 6 29-31 8 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-nihon-koten-kindai
 0 6 1-5 9 * radiko/rec_radiko.sh radiko HOUSOU-DAIGAKU 90 oic-nihon-koten-kindai
