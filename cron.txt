@@ -6,15 +6,15 @@
 ## 寄席アプリ
 #30 17 * * 0 radiko/rec_radiko.sh radiko RN1 30 yose
 ## おしゃべり古典教室
-0 0 * * 1 radiko/rec_radiko.sh nhk r2 30 koten
-## JUNK伊集院光
+#0 0 * * 1 radiko/rec_radiko.sh nhk r2 30 koten
+### JUNK伊集院光
 0 1 * * 2 radiko/rec_radiko.sh radiko TBS 120 ijuin
 ## JUNK爆笑問題
 0 1 * * 3 radiko/rec_radiko.sh radiko TBS 120 bakusho
 ## くにまるジャパン
-0 9 1-7 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
-0 9 15-21 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
-0 9 29-31 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
+#0 9 1-7 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
+#0 9 15-21 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
+#0 9 29-31 * * test $(date +\%w) -eq 5 && radiko/rec_radiko.sh radiko QRR 40 kunimaru
 ## 真打競演
 #5 10 * * 6 radiko/rec_radiko.sh nhk r1 50 shinuchi
 ## 司馬遼太郎
